@@ -4,9 +4,10 @@ export default async function Books() {
 
   await new Promise((resolve)=>setTimeout(resolve, 3000));  
   return (
-    <div>
+    <div >
       <h1>Our Books List</h1>
-      {books.map((book)=><div key={book.id}>
+      <div className='book-container'>
+      {books.map((book)=><div className='book-item' key={book.id} >
         <h1>{book.title}</h1>
         <p>{book.description}</p>
         <p>Price: ${book.price}</p>
@@ -14,7 +15,7 @@ export default async function Books() {
           View Details
         </Link>
       </div>)}
-
+     </div>
     </div>
   );
 }
