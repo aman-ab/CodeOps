@@ -1,5 +1,13 @@
+"use client";
+
+//CLIENT SIDE REDNDERING
+//BECAUSE THIS IS  A LAYOUT COMPONENET
+//IT HAS RELATED TO STATE MANAGMENT AND 
+//INTRACTIVITY
+import { useState } from "react";
 export default function BooksLayout({children}) {
-  return (
+   const [category, setCategory] = useState("All");
+    return (
     <div className="book-layout">
       <aside>
         <h2>Books</h2>

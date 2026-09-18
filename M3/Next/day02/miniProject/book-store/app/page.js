@@ -1,4 +1,7 @@
-
+//STATIC RENDERING
+//BCZ THIS IS A PAGE COMPONENET
+// IT DOES NOT HAVE TASK RELATED TO STATE MANAGEMNT
+// AND INTRACTIVITY
 export default function Home() {
   return (
   <div>
