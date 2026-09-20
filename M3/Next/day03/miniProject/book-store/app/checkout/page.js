@@ -1,4 +1,4 @@
-export const dynamic  ="force dynamic"
+export const dynamic  ="force-dynamic";
 //DYNAMIC RENDERING
 // BECAUSE THIS PAGE IS HAS USER SPECIFIC DATA 
 // OR INTERACITIVITY

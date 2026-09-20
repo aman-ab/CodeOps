@@ -10,6 +10,7 @@ export default async function SingleBookPage({ params }) {
     <div>
       <h1>{book.title}</h1>
       <p>{book.description}</p>
+      <p>{book.category}</p>
       <p>Price: ${book.price}</p>
     </div>
   );
