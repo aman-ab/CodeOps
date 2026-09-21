@@ -1,7 +1,7 @@
-const products = [{id: 1, name: "Laptop", price: 25000},
-     {id: 2, name: "Camera", price: 25900},
-    {id: 3, name: "HeadPhones", price: 1000},
-    {id: 4, name: "Tv", price: 45000}]
+const products = [{id: 1, name: "Laptop", price: 25000, quantitiy: 1,isAdded: false},
+     {id: 2, name: "Camera", price: 25900, quantitiy: 1},
+    {id: 3, name: "HeadPhones", price: 1000 , quantitiy: 1},
+    {id: 4, name: "Tv", price: 45000, quantitiy: 1}]
 let cart =[];
 
 const productConatiner = document.getElementById("products")
@@ -26,9 +26,12 @@ function addToCart(productId){
         return item.id===productId;
 
     });
-    cart.push(product);
+  
+  cart.push(product);
     localStorage.setItem("cart",JSON.stringify(cart));
     displayCart();
+
+  
 
 }
 function displayCart(){
@@ -39,6 +42,10 @@ function displayCart(){
      <div class ="pc">
      <h3> ${product.name} </h3>
      <p> ${product.price}</p>
+     <button onclick ="increaseItem(${product.id})"> + </button>
+     <p> ${product.quantitiy}  </p>
+     <p> SubTotal : ${product.price*product.quantitiy}</p>
+     <button onclick ="decreaseItem(${product.id})"> - </button>
      
      <button onclick ="removeFromCart(${index})"> Remove </button>
      </div>`;
@@ -47,7 +54,28 @@ function displayCart(){
     calculateTotal();
 }
 
-
+function increaseItem(productId){
+    const product =cart.find(function(item){
+        return  item.id ===productId;
+    })
+    product.quantitiy++;
+    localStorage.setItem("cart",JSON.stringify(cart));
+    displayCart();
+}
+function decreaseItem(productId){
+    const product =cart.find(function(item){
+        return item.id ===productId
+    });
+    if(product.quantitiy >1){
+        product.quantitiy--;
+    } else{
+        cart =cart.filter(function(item){
+            return item.id !== productId;
+        });
+    }
+localStorage.setItem("cart", JSON.stringify(cart));
+displayCart();
+}
 
 function removeFromCart(index){
     cart.splice(index, 1);
@@ -80,3 +108,7 @@ document.getElementById("total").textContent = total;
         darkModeBtn.textContent = "Dark Mode"
      }
     });
+    function decreaseProduct (){
+
+
+    }
