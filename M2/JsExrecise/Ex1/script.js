@@ -4,10 +4,13 @@ const products = [{id: 1, name: "Laptop", price: 25000, quantitiy: 1,isAdded: fa
     {id: 4, name: "Tv", price: 45000, quantitiy: 1}]
 let cart =[];
 
-const productConatiner = document.getElementById("products")
-function displayProducts(){
+const productConatiner = document.getElementById("products");
+
+
+
+function displayProducts(productTodisplay = products){
     productConatiner.innerHTM = "";
-    products.forEach(function(product){
+    productTodisplay.forEach(function(product){
         productConatiner.innerHTML +=`
         <div class ="pc">
         <h3>${product.name}
@@ -61,6 +64,7 @@ function increaseItem(productId){
     product.quantitiy++;
     localStorage.setItem("cart",JSON.stringify(cart));
     displayCart();
+    calculateTotal();
 }
 function decreaseItem(productId){
     const product =cart.find(function(item){
@@ -75,6 +79,7 @@ function decreaseItem(productId){
     }
 localStorage.setItem("cart", JSON.stringify(cart));
 displayCart();
+calculateTotal();
 }
 
 function removeFromCart(index){
@@ -83,8 +88,7 @@ function removeFromCart(index){
 }
 function calculateTotal(){
 const total = cart.reduce(function(sum ,product){
-  return sum + product.price;
-
+  return sum + (product.price * product.quantitiy);
 }, 0);
 document.getElementById("total").textContent = total;
 }
@@ -108,7 +112,12 @@ document.getElementById("total").textContent = total;
         darkModeBtn.textContent = "Dark Mode"
      }
     });
-    function decreaseProduct (){
 
-
-    }
+  const Search = document.getElementById("search");
+   Search.addEventListener("search",function(){
+   const searchText = Search.value.toLowerCase();
+   const filterProducts =products.filter(function(product){
+    return product.name.toLowerCase().includes(searchText);
+   });
+   displayProducts(filterProducts);
+   });
