@@ -12,10 +12,18 @@
     <label>Search</label>
      
      <input type ="text" id="search" placeholder=" search products ">
-    <div id="products"> 
-    </div>
+ <div id="categories"> 
+    <button onclick="filterByCategory('All')">ALL</button>
+    <button onclick="filterByCategory('Laptop')">Laptop</button>
+    <button onclick="filterByCategory('Camera')">Camera</button>
+    <button onclick="filterByCategory('HeadPhones')">HeadPhones</button>
+    <button onclick="filterByCategory('Tv')">Tv</button>
+  </div>
+<div id="products"> 
+</div>
     <h1>Cart</h1>
-    <div id="cart"></div>
+ <div id="cart"></div>
+
     <h2>    Total: $ <span id="total"> 0</span></h2>
 <script src="script.js"></script>
 </body>

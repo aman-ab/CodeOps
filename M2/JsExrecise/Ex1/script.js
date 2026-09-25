@@ -1,7 +1,7 @@
-const products = [{id: 1, name: "Laptop", price: 25000, quantitiy: 1,isAdded: false},
-     {id: 2, name: "Camera", price: 25900, quantitiy: 1},
-    {id: 3, name: "HeadPhones", price: 1000 , quantitiy: 1},
-    {id: 4, name: "Tv", price: 45000, quantitiy: 1}]
+const products = [{id: 1, name: "Laptop", price: 25000, quantitiy: 1,category: "Laptop"},
+     {id: 2, name: "Camera", price: 25900, quantitiy: 1,category: "Camera"},
+    {id: 3, name: "HeadPhones", price: 1000 , quantitiy: 1,category: "HeadPhones"},
+    {id: 4, name: "Tv", price: 45000, quantitiy: 1,category: "Tv"}]
 let cart =[];
 
 const productConatiner = document.getElementById("products");
@@ -9,7 +9,7 @@ const productConatiner = document.getElementById("products");
 
 
 function displayProducts(productTodisplay = products){
-    productConatiner.innerHTM = "";
+    productConatiner.innerHTML= "";
     productTodisplay.forEach(function(product){
         productConatiner.innerHTML +=`
         <div class ="pc">
@@ -102,22 +102,32 @@ document.getElementById("total").textContent = total;
     
     displayCart();
 
-    const darkModeBtn =document.getElementById("darkModeBtn");
-    darkModeBtn.addEventListener("click",function(){
-     document.body.classList.toggle("dark");
 
-     if(document.body.classList.contains("dark")){
-        darkModeBtn.textContent = "Light Mode";
-     } else {
-        darkModeBtn.textContent = "Dark Mode"
-     }
+    const darkModeBtn = document.getElementById("darkModeBtn");
+     darkModeBtn.addEventListener("click",function(){
+        document.body.classList.toggle("dark");
+        if(document.body.classList.contains("dark")){
+            darkModeBtn.textContent = " Light Mode";
+        } else{
+            darkModeBtn.textContent = "Dark Mode"
+        }
     });
 
-  const Search = document.getElementById("search");
-   Search.addEventListener("search",function(){
-   const searchText = Search.value.toLowerCase();
+  const searchInput = document.getElementById("search");
+   searchInput.addEventListener("input",function(){
+   const searchText = searchInput.value.toLowerCase();
    const filterProducts =products.filter(function(product){
     return product.name.toLowerCase().includes(searchText);
    });
    displayProducts(filterProducts);
    });
+function filterByCategory(category){
+    if (category ==="All"){
+        displayProducts();
+    } else{
+        const filteredProducts =products.filter(function (product){
+         return product.category === category;
+        });
+        displayProducts(filteredProducts);
+    }
+}
