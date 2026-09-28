@@ -3,9 +3,10 @@ const products = [{id: 1, name: "Laptop", price: 25000, quantitiy: 1,category: "
     {id: 3, name: "HeadPhones", price: 1000 , quantitiy: 1,category: "HeadPhones"},
     {id: 4, name: "Tv", price: 45000, quantitiy: 1,category: "Tv"}]
 let cart =[];
+let selectedCategory = ["All"];
 
 const productConatiner = document.getElementById("products");
-
+const searchInput = document.getElementById("search");
 
 
 function displayProducts(productTodisplay = products){
@@ -113,21 +114,16 @@ document.getElementById("total").textContent = total;
         }
     });
 
-  const searchInput = document.getElementById("search");
-   searchInput.addEventListener("input",function(){
-   const searchText = searchInput.value.toLowerCase();
-   const filterProducts =products.filter(function(product){
-    return product.name.toLowerCase().includes(searchText);
-   });
-   displayProducts(filterProducts);
-   });
-function filterByCategory(category){
-    if (category ==="All"){
-        displayProducts();
-    } else{
-        const filteredProducts =products.filter(function (product){
-         return product.category === category;
+
+
+    function filterProducts(){
+        const searchText = searchInput.value.toLowerCase();
+        const filteredProducts = products.filter(function(product){
+        const matchCategory = selectedCategory === "All" || product.category === selectedCategory;
+       const matchSearch = product.name.toLowerCase().includes(searchText);
+       return matchCategory && matchSearch;
         });
         displayProducts(filteredProducts);
+        
     }
-}
+   
