@@ -1,19 +1,11 @@
 import Link from "next/link"
 import { dishes } from "../data/dishes"
-import {Suspense} from "react";
 
-function DishSkeleton() {
+export default async function Dishes(){
+    await new Promise((resolve)=>setTimeout(resolve,2000));
     return (
-        <div className="dish-skeleton">
-            <h2>Loading...</h2>
-        </div>
-    );
-}
-
-async function DishList() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return (
-        <div>
+        <div> 
+            <h1>Our  dishes </h1>
             {dishes.map((dish)=>(
                 <div key={dish.id}>
                     <h2>{dish.name}</h2>
@@ -28,20 +20,6 @@ async function DishList() {
                     <Link href={`/dishes/${dish.id}`}>View Details</Link>
                     </div>
             ))}
-
-         </div>
-        
-    )
-}
-
- export default  function Dishes(){
- 
-    return (
-        <div>
-            <h1>Our Dishes</h1>
-            <Suspense fallback={<DishSkeleton />}>
-                <DishList />
-            </Suspense>
         </div>
     )
 }
