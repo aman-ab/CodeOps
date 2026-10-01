@@ -1,46 +1,20 @@
-import Link from "next/link"
-import { dishes } from "../data/dishes"
 import {Suspense} from "react";
+import DishList from "../components/DishList";
+import DishSkeleton from "../components/DishSkeleton";
+import { dishes } from "../data/dishes";
+import CategoryFilter from "../components/CategoryFilter";
 
-function DishSkeleton() {
-    return (
-        <div className="dish-skeleton">
-            <h2>Loading...</h2>
-        </div>
-    );
-}
-
-async function DishList() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return (
-        <div>
-            {dishes.map((dish)=>(
-                <div key={dish.id}>
-                    <h2>{dish.name}</h2>
-                    <p>{dish.catagory}</p>
-                    <p>{dish.price}</p>
-                    <p>{dish.description}</p>
-                    {dish.isspicy && (
-                        <p>
-                        <em>spicy 🌶️</em>
-                        </p>
-                    )}
-                    <Link href={`/dishes/${dish.id}`}>View Details</Link>
-                    </div>
-            ))}
-
-         </div>
-        
-    )
-}
 
  export default  function Dishes(){
- 
+   
     return (
         <div>
             <h1>Our Dishes</h1>
-            <Suspense fallback={<DishSkeleton />}>
-                <DishList />
+            <CategoryFilter categories={["All",
+                ...new Set(dishes.map((dish)=>dish.catagory)),
+            ]}/>
+            <Suspense fallback={<DishSkeleton/>}>
+                <DishList dishes ={dishes}/>
             </Suspense>
         </div>
     )
