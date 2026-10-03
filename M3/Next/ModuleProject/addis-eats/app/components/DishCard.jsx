@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToCart from "./AddtoCartButton";
 export default function DishCard({dish}){
     return(
         <div>
@@ -12,6 +13,7 @@ export default function DishCard({dish}){
                         </p>
                     )}
                     <Link href={`/dishes/${dish.id}`}>View Details</Link>
+                     <AddToCart dish={dish}/>
         </div>
     );
 }

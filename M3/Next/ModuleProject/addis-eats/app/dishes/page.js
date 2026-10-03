@@ -3,6 +3,7 @@ import DishList from "../components/DishList";
 import DishSkeleton from "../components/DishSkeleton";
 import { dishes } from "../data/dishes";
 import CategoryFilter from "../components/CategoryFilter";
+import FilterShell from "../components/FilterShell";
 
 
  export default  function Dishes(){
@@ -14,7 +15,9 @@ import CategoryFilter from "../components/CategoryFilter";
                 ...new Set(dishes.map((dish)=>dish.catagory)),
             ]}/>
             <Suspense fallback={<DishSkeleton/>}>
+                <FilterShell>
                 <DishList dishes ={dishes}/>
+                </FilterShell>
             </Suspense>
         </div>
     )
