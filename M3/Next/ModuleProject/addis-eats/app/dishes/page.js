@@ -1,13 +1,13 @@
 import {Suspense} from "react";
 import DishList from "../components/DishList";
 import DishSkeleton from "../components/DishSkeleton";
-import { dishes } from "../data/dishes";
 import CategoryFilter from "../components/CategoryFilter";
 import FilterShell from "../components/FilterShell";
+import {getDishes} from "../../lib/dishes";
 
+ export default async  function Dishes(){
 
- export default  function Dishes(){
-   
+    const dishes = await getDishes();
     return (
         <div>
             <h1>Our Dishes</h1>

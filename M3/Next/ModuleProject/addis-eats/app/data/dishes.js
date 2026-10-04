@@ -1,6 +1,6 @@
 export const dishes = [
     {
-      id: 1,
+      id: "1",
       name: "Doro Wot",
       price: 750,
       catagory: "Main Dish",
@@ -8,7 +8,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 2,
+      id: "2",
       name: "Tibs",
       price: 650,
       catagory: "Main Dish",
@@ -16,7 +16,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 3,
+      id: "3",
       name: "Shiro Wot",
       price: 450,
       catagory: "Main Dish",
@@ -24,7 +24,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 4,
+      id: "4",
       name: "Kitfo",
       price: 850,
       catagory: "Main Dish",
@@ -32,7 +32,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 5,
+      id: "5",
       name: "Firfir",
       price: 400,
       catagory: "Main Dish",
@@ -40,7 +40,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 6,
+      id: "6",
       name: "Fuul",
       price: 350,
       catagory: "Main Dish",
@@ -48,7 +48,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 7,
+      id: "7",
       name: "Chechebsa",
       price: 350,
       catagory: "Main Dish",
@@ -56,7 +56,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 8,
+      id: "8",
       name: "Beyaynetu",
       price: 500,
       catagory: "Main Dish",
@@ -64,7 +64,7 @@ export const dishes = [
       isspicy: true
     },
     {
-      id: 9,
+      id: "9",
       name: "Injera",
       price: 100,
       catagory: "Side Dish",
@@ -72,7 +72,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 10,
+      id: "10",
       name: "Avocado Salad",
       price: 250,
       catagory: "Side Dish",
@@ -80,7 +80,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 11,
+      id: "11",
       name: "French Fries",
       price: 200,
       catagory: "Side Dish",
@@ -88,7 +88,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 12,
+      id: "12",
       name: "Avocado Juice",
       price: 250,
       catagory: "Beverage",
@@ -96,7 +96,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 13,
+      id: "13",
       name: "Coca Cola",
       price: 120,
       catagory: "Beverage",
@@ -104,7 +104,7 @@ export const dishes = [
       isspicy: false
     },
     {
-      id: 14,
+      id: "14",
       name: "Ambo",
       price: 100,
       catagory: "Beverage",

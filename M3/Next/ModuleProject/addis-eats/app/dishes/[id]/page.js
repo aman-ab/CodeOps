@@ -1,13 +1,21 @@
-import { dishes } from "@/app/data/dishes";
+import { getDishById,getReviewsByDishId } from "../../../lib/dishes";
 import { notFound } from "next/navigation";
 export default async function SingleDish({params}){
     const {id}= await params;
-    const dish = dishes.find((dish)=>dish.id=== parseInt(id));
+    // STREAMING DATA FEATCHING
+    // const dish = await getDishById(id);
+    // const reviews = await getReviewsByDishId(id);
+    
+    const [dish, reviews] = await Promise.all([
+        getDishById(id),
+        getReviewsByDishId(id)
+    ])
     if(!dish){
        notFound();
     }
     return(
         <div>
+            <h2>Dishes</h2>
          <h1>{dish.name}</h1>
          <p>{dish.catagory}</p>
          <p>{dish.price}</p>
@@ -19,6 +27,14 @@ export default async function SingleDish({params}){
                 </em>
             </p>
          )}
+         <h3>Reviews</h3>
+         <ul>
+             {reviews.map((review) => (
+                 <li key={review.id}>
+                     <strong>{review.user}</strong>: {review.comment} <em>({review.rating} stars)</em>
+                 </li>
+             ))}
+         </ul>
         </div>
     );
 }
