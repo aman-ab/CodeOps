@@ -1,0 +1,54 @@
+import { useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+
+// /login — sends the person back to where they were going.
+function Login() {
+  const { user, loading, login } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  // RequireAuth put the page they wanted in location.state.from
+  const from = location.state?.from?.pathname ?? "/menu";
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!/^09\d{8}$/.test(phone)) {
+      setError("Enter a phone number like 0911223344.");
+      return;
+    }
+    setError("");
+    setBusy(true);
+    await login(phone);
+    navigate(from, { replace: true }); // e.g. back to /checkout
+  }
+
+  if (loading) return <p>Checking your session…</p>;
+  // already signed in and opened /login by hand: redirect while rendering
+  if (user && !busy) return <Navigate to={from} replace />;
+
+  return (
+    <div className="main-c">
+      <h2>Sign in</h2>
+      {location.state?.from && <p>Please sign in to continue to {from}.</p>}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="login-phone"> Phone:</label>
+        <input
+          id="login-phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="0911223344"
+        />
+        <button type="submit" disabled={busy}>
+          {busy ? "Signing in…" : "Sign in"}
+        </button>
+        {error && <p>{error}</p>}
+      </form>
+    </div>
+  );
+}
+
+export default Login;

@@ -1,0 +1,100 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Doro wot",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": true,
+      "description": "Spicy chicken stew with a boiled egg, slow-cooked in berbere and served with injera."
+    },
+    {
+      "id": 2,
+      "name": "injera",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": false,
+      "description": "Soft, slightly sour flatbread made from teff, the base of every Ethiopian meal."
+    },
+    {
+      "id": 3,
+      "name": "shiro wot ",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": true,
+      "description": "Smooth chickpea stew simmered with garlic, onion and berbere."
+    },
+    {
+      "id": 4,
+      "name": "Doro wot",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": false,
+      "description": "Spicy chicken stew with a boiled egg, slow-cooked in berbere and served with injera."
+    },
+    {
+      "id": 5,
+      "name": "injera",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": true,
+      "description": "Soft, slightly sour flatbread made from teff, the base of every Ethiopian meal."
+    },
+    {
+      "id": 6,
+      "name": "shiro wot ",
+      "price": 156,
+      "catagory": "side Dish",
+      "isspicy": true,
+      "description": "Smooth chickpea stew simmered with garlic, onion and berbere."
+    },
+    {
+      "id": 7,
+      "name": "Doro wot",
+      "price": 100,
+      "catagory": "main course",
+      "isspicy": false,
+      "description": "Spicy chicken stew with a boiled egg, slow-cooked in berbere and served with injera."
+    },
+    {
+      "id": 8,
+      "name": "injera",
+      "price": 140,
+      "catagory": "main course",
+      "isspicy": false,
+      "description": "Soft, slightly sour flatbread made from teff, the base of every Ethiopian meal."
+    },
+    {
+      "id": 9,
+      "name": "shiro wot ",
+      "price": 160,
+      "catagory": "main course",
+      "isspicy": true,
+      "description": "Smooth chickpea stew simmered with garlic, onion and berbere."
+    },
+    {
+      "id": 10,
+      "name": "Doro wot",
+      "price": 110,
+      "catagory": "main course",
+      "isspicy": false,
+      "description": "Spicy chicken stew with a boiled egg, slow-cooked in berbere and served with injera."
+    },
+    {
+      "id": 11,
+      "name": "injera",
+      "price": 152,
+      "catagory": "main course",
+      "isspicy": true,
+      "description": "Soft, slightly sour flatbread made from teff, the base of every Ethiopian meal."
+    },
+    {
+      "id": 12,
+      "name": "Ambo ",
+      "price": 152,
+      "catagory": "beverage",
+      "isspicy": false,
+      "description": "Sparkling mineral water from Ambo, served cold."
+    }
+  ]
+}
