@@ -1,0 +1,42 @@
+h1{
+    color:red;
+} 
+.hi{
+    color: lightblue;
+}
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 25px;
+}
+
+.card:hover{
+    border: 1px solid chocolate;
+    background-color: #ffcbf8;
+
+}
+.card{
+    background-color: #fdfcfc;
+    border: 1px solid wheat;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+.footer{
+   margin-top: 20px;
+    text-align: center;
+    padding: 25px;
+}
+@media(min-width:680px){
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+.main-c{
+    text-align: center;
+}
+.header-c{
+    text-align: center;
+}
