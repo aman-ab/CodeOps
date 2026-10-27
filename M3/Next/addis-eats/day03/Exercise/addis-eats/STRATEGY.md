@@ -1,0 +1,2 @@
+# Rendering strategy — Addis Eats
+

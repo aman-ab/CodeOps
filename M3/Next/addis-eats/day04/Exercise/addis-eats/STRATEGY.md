@@ -1,0 +1,22 @@
+# Rendering strategy — Addis Eats
+
+| Route | Strategy | Build marker | Why |
+|---|---|---|---|
+| `/` | Static (SSG) | ○ | Story and address never change between builds. |
+| `/menu` | ISR, `revalidate = 3600` | ○ | Dishes change a few times a day; an hour of staleness misleads nobody and speed matters most. |
+| `/menu/[id]` | Static via `generateStaticParams` | ● | Every dish id is known at build time: one HTML file per dish. |
+| `/cart` | Static shell + client state | ○ | Cart contents are private browser state, nothing to render per request on the server. |
+| `/checkout` | Dynamic (SSR) | ƒ (λ in older versions) | `await cookies()` reads the session cookie, so the response depends on who is asking. |
+| any unknown URL | Static | ○ (`/_not-found`) | Same page for everyone. |
+
+Layouts: `app/layout.js` (header + footer, owns html/body) → `app/menu/layout.js` (sidebar, persists across /menu ↔ /menu/[id]).
+Streaming: `DishList` sits inside `<Suspense>` so the sidebar paints before the dishes.
+
+## Day 39 additions
+
+| Route | Strategy | Why |
+|---|---|---|
+| `/orders` | Static + `revalidatePath("/orders")` | Same list for everyone; refreshed on demand after every write instead of on a timer. |
+| `GET /api/dishes` | Dynamic (ƒ) | Reads `request.url` for the `?category=` filter. |
+| `GET /api/dishes/[id]` | Dynamic (ƒ) | Dynamic segment with no `generateStaticParams`. |
+| `POST /api/orders` | Never cached | Writes data. |

@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+@theme static {
+  /* Berbere red-orange: main brand colour */
+  --color-brand-50: #fff4ed;
+  --color-brand-100: #ffe5d3;
+  --color-brand-200: #fdc9a6;
+  --color-brand-500: #e8590c;
+  --color-brand-600: #cf4a07;
+  --color-brand-700: #ab3b08;
+  --color-brand-800: #8a310d;
+
+  /* Leaf green: success / "fresh" */
+  --color-leaf-50: #eef7f0;
+  --color-leaf-100: #d6ecdb;
+  --color-leaf-600: #2f7d4a;
+  --color-leaf-700: #256239;
+
+  /* Gold: highlights */
+  --color-gold-100: #fdf0c8;
+  --color-gold-400: #f3b928;
+  --color-gold-500: #e5a50a;
+
+  /* Warm neutrals */
+  --color-cream: #fbf6ec;
+  --color-ink-50: #f7f3ee;
+  --color-ink-100: #ece5dc;
+  --color-ink-200: #d9cfc2;
+  --color-ink-300: #bfb2a2;
+  --color-ink-400: #9a8c7d;
+  --color-ink-500: #7a6c5f;
+  --color-ink-600: #5e5247;
+  --color-ink-700: #463c33;
+  --color-ink-800: #30281f;
+  --color-ink-900: #1f1812;
+}
+
+/* Fonts are loaded in layout.js with next/font */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+@layer base {
+  /* ---------- Base ---------- */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink-800);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    color: var(--color-ink-900);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* ---------- Reusable components ---------- */
+  .page {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 2rem 1rem 3.5rem;
+  }
+  @media (min-width: 640px) {
+    .page {
+      padding: 3rem 1.5rem 4.5rem;
+    }
+  }
+
+  .page-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+  @media (min-width: 640px) {
+    .page-title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .page-subtitle {
+    margin-top: 0.5rem;
+    color: var(--color-ink-500);
+    max-width: 40rem;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid var(--color-ink-100);
+    box-shadow: 0 1px 2px rgba(48, 40, 31, 0.04);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      box-shadow 0.15s,
+      transform 0.05s;
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .btn-primary {
+    background: var(--color-brand-600);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(171, 59, 8, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-700);
+  }
+  .btn-secondary {
+    background: #fff;
+    color: var(--color-ink-800);
+    border-color: var(--color-ink-200);
+  }
+  .btn-secondary:hover {
+    background: var(--color-ink-50);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink-700);
+  }
+  .btn-ghost:hover {
+    background: var(--color-ink-100);
+  }
+  .btn-sm {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.8125rem;
+  }
+  .btn-block {
+    width: 100%;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-700);
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-ink-200);
+    background: #fff;
+    padding: 0.7rem 0.9rem;
+    font-size: 1rem; /* 16px stops iOS zooming into inputs */
+    color: var(--color-ink-900);
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+  .input::placeholder {
+    color: var(--color-ink-400);
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-brand-500);
+    box-shadow: 0 0 0 3px rgba(232, 89, 12, 0.2);
+  }
+  .input[aria-invalid="true"] {
+    border-color: #c62828;
+  }
+
+  .field-error {
+    margin-top: 0.3rem;
+    font-size: 0.8125rem;
+    color: #b3261e;
+  }
+
+  .alert {
+    border-radius: 0.75rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9375rem;
+  }
+  .alert-error {
+    background: #fdecea;
+    color: #8c1d18;
+    border: 1px solid #f5c6c2;
+  }
+  .alert-success {
+    background: var(--color-leaf-50);
+    color: var(--color-leaf-700);
+    border: 1px solid var(--color-leaf-100);
+  }
+  .alert-info {
+    background: var(--color-gold-100);
+    color: #7a5a00;
+    border: 1px solid #f3dd96;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Loading shimmer */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  .skeleton {
+    border-radius: 0.5rem;
+    background: linear-gradient(
+      90deg,
+      var(--color-ink-100) 25%,
+      var(--color-ink-50) 50%,
+      var(--color-ink-100) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite linear;
+  }
+}
+
+/* Leaflet map must never be wider than its container */
+.leaflet-container {
+  width: 100%;
+  border-radius: 1rem;
+  z-index: 0;
+}
