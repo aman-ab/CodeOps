@@ -1,3 +1,5 @@
+import { Restaurant } from "./restaurant.types";
+
 // src/restaurants/restaurants.seed.ts
 export const SEED: Restaurant[] = [
   { id: 1, name: "Yod Abyssinia",       area: "Bole",      isOpen: true  },
