@@ -1,0 +1,1 @@
+{ "customer": "Almaz Bekele", "area": "Bole", "restaurantId": 1, "phone": "0812345678", "lines": [ { "dishId": 1, "quantity": 1 } ] }
